@@ -17,9 +17,11 @@ class RepoController extends Controller
 
         // dd($this->openaiService->sendMessage($request->descricaoProjeto));
 
-        dd($this->llmService->sendMessage($request->descricaoProjeto));
+        // dd($this->llmService->sendMessage($request->descricaoProjeto));
 
-        dd($request->all());
+        // dd($request->all());
+
+        return view('pages.repo.response', ['response' => $this->llmService->filtrarPalavrasChave($request->descricaoProjeto)]);
 
     }
 }
