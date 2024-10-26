@@ -1,5 +1,5 @@
 {
-    "name": "Reposeek",
+    "name": "lucascantao/reposeek",
     "type": "project",
     "description": "Sistema de análise de projetos",
     "keywords": ["laravel", "framework"],
