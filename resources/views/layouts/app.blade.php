@@ -18,7 +18,7 @@
     </head>
     <body>
 
-        @include('layouts.header')
+        {{-- @include('layouts.header') --}}
         <main class="content">
             @yield('content')
         </main>
