@@ -8,20 +8,29 @@ class RepoController extends Controller
 {
 
     public function form() {
-        return view('pages.repo.form');
+        return view('pages.repo.index');
     }
 
     public function searchRepositories(Request $request) {
 
-        // dd($this->githubService->searchRepo($request->descricaoProjeto));
+        $keywords_array = $this->llmService->filtrarPalavrasChaveMock($request->descricaoProjeto);
 
-        // dd($this->openaiService->sendMessage($request->descricaoProjeto));
+        // dd(implode($keywords_array['ERP']));
 
-        // dd($this->llmService->sendMessage($request->descricaoProjeto));
+        $query_key = '';
 
-        // dd($request->all());
+        foreach ($keywords_array as $entry) {
+            foreach ($entry as $key) {
+                $query_key .= $key . ' OR ';
+            }
+        }
+        $query_key = str_replace(' ', '%20', $query_key);
 
-        return view('pages.repo.response', ['response' => $this->llmService->filtrarPalavrasChave($request->descricaoProjeto)]);
+        // dd($query_key);
+
+        $response = $this->githubService->searchRepo($query_key);
+
+        return view('pages.repo.response', ['response' => '']);
 
     }
 }

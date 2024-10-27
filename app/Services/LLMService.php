@@ -56,30 +56,152 @@ class LLMService {
             $decoded = json_decode($response, true);
             $content = $decoded['choices'][0]['message']['content'];
             $keywords = $this->extractKeyWords($categories, $content);
-            return $content;
+            return $keywords;
         }
 
         curl_close($ch);
+    }
 
-        // $responseExample = "[ {categoria: 'Linguagem', classificacao: 'Qualquer'}, {categoria: 'Funcionalidade', classificacao: 'ERP'}, {categoria: 'Dominio', classificacao: 'Desktop'}, {categoria: 'Arquitetura', classificacao: 'Monolítico'}, {categoria: 'Interação', classificacao: 'GUI'} ]";
+    function filtrarPalavrasChaveMock($projectDescription) {
+        $categories = [
+            'Linguagem' => ['Qualquer'],
+            'Funcionalidade' => ['CRUD', 'ERP', 'E-commerce', 'BI'],
+            'Dominio' => ['WEB', 'Mobile', 'Desktop'],
+            'Arquitetura' => ['Monolítico', 'Microsserviços'],
+            'Interação' => ['API', 'GUI']
+        ];
 
-        // return $this->extractKeyWords($categories, $responseExample);
+        $responseExample = "[ {categoria: 'Linguagem', classificacao: 'Qualquer'}, {categoria: 'Funcionalidade', classificacao: 'ERP'}, {categoria: 'Dominio', classificacao: 'Desktop'}, {categoria: 'Arquitetura', classificacao: 'Monolítico'}, {categoria: 'Interação', classificacao: 'GUI'} ]";
 
+        return $this->extractKeyWords($categories, $responseExample);
     }
 
     function extractKeyWords($categories, $text) {
+
+        // $filters = [
+        //     'Qualquer' => [],
+        
+        //     'CRUD' => [
+        //         'create', 'read', 'update', 'delete', 'CRUD operations', 
+        //         'RESTful', 'basic app', 'resource management'
+        //     ],
+        
+        //     'ERP' => [
+        //         'enterprise resource planning', 'ERP', 'business management', 
+        //         'inventory', 'accounting', 'HR', 'supply chain'
+        //     ],
+        
+        //     'E-commerce' => [
+        //         'ecommerce', 'shopping', 'payment', 'checkout', 'cart', 
+        //         'online store', 'product listing'
+        //     ],
+        
+        //     'BI' => [
+        //         'business intelligence', 'BI', 'data visualization', 
+        //         'analytics', 'dashboard', 'reporting', 'ETL', 'data warehouse'
+        //     ],
+        
+        //     'WEB' => [
+        //         'web app', 'web application', 'browser', 'frontend', 
+        //         'backend', 'website', 'SPA', 'single page application'
+        //     ],
+        
+        //     'Mobile' => [
+        //         'mobile app', 'iOS', 'Android', 'react native', 'flutter', 
+        //         'apk', 'mobile development'
+        //     ],
+        
+        //     'Desktop' => [
+        //         'desktop application', 'electron', 'exe', 'software', 
+        //         'standalone app', 'desktop app', 'cross-platform'
+        //     ],
+        
+        //     'Monolítico' => [
+        //         'monolithic', 'single codebase', 'single deployable', 
+        //         'monolithic architecture', 'monolith'
+        //     ],
+        
+        //     'Microsserviços' => [
+        //         'microservices', 'service-oriented', 'distributed', 
+        //         'RESTful', 'docker', 'containerization', 
+        //         'microservice architecture'
+        //     ],
+        
+        //     'API' => [
+        //         'API', 'RESTful', 'GraphQL', 'endpoint', 
+        //         'service integration', 'data exchange', 'JSON', 
+        //         'API development'
+        //     ],
+        
+        //     'GUI' => [
+        //         'graphical user interface', 'user interface', 'UI', 
+        //         'interface design', 'frontend', 'desktop GUI', 
+        //         'visual elements', 'interaction'
+        //     ]
+        // ];
+
+        $filters = [
+            'Qualquer' => [],
+        
+            'CRUD' => [
+                'CRUD', 'RESTful'
+            ],
+        
+            'ERP' => [
+                'ERP', 'business', 'inventory',
+            ],
+        
+            'E-commerce' => [
+                'ecommerce','store', 'product'
+            ],
+        
+            'BI' => [
+                'business intelligence', 'BI', 'data', 'analytics', 'dashboard'
+            ],
+        
+            'WEB' => [
+                'web app', 'web', 'browser', 'SPA'
+            ],
+        
+            'Mobile' => [
+                'mobile', 'iOS', 'Android', 'apk'
+            ],
+        
+            'Desktop' => [
+                'desktop', 'electron', 'software'
+            ],
+        
+            'Monolítico' => [
+                'monolithic', 'monolith'
+            ],
+        
+            'Microsserviços' => [
+                'microservices', 'distributed', 'RESTful', 'containerization'
+            ],
+        
+            'API' => [
+                'API', 'RESTful', 'GraphQL', 'endpoint', 'service integration', 'JSON'
+            ],
+        
+            'GUI' => [
+                'interface', 'UI', 'frontend', 'visual',
+            ]
+        ];
+
         $keywords = [];
+
         $raystack = strtoupper($text);
+
         foreach($categories as $cat) {
             foreach($cat as $entry) {
                 $needle = strtoupper($entry);
                 if(str_contains($raystack, $needle)){
-                    $keywords[] = $needle;
+                    $keywords[$entry] = $filters[$entry];
                 }
             }
         }
 
-        dd($keywords);
+        // dd($keywords);
 
         return $keywords;
     }

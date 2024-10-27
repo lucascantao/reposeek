@@ -89,9 +89,11 @@ class GithubService {
 
         $url = 'https://api.github.com/search/repositories?q=';
 
-        $NOT_BY_VALIDATORS = '+-org:laravel+-org:Laravel-Lang+-org:NativePHP';
+        $NOT_BY_VALIDATORS = '+-org:Laravel-Backpack+-org:laravel+-org:Laravel-Lang+-org:NativePHP+-org:nodejs+-org:nextjsx+-org:nestjsx+-org:facebook+-org:vercel+-org:vuejs+-org:angular+-org:babel+-org:webpack+-org:electron+-org:emberjs+-org:apache+-org:gradle+-org:openjdk+-org:jboss+-org:spring-projects+-org:pallets+-org:django+-org:python+-org:pytorch+-org:numpy+-org:scipy+-org:pandas-dev+-org:ansible+-org:dotnet+-org:microsoft+-org:mono+-org:xamarin';
 
-        $query = $keys . $NOT_BY_VALIDATORS;
+        $query = $keys . '%20in:name';
+
+        // dd(strlen($url . $query));
 
         curl_setopt($ch, CURLOPT_URL, $url . $query);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -101,16 +103,34 @@ class GithubService {
 
         $resp = curl_exec($ch);
 
+        dd($resp);
+
         if($e = curl_error($ch)){
             return($e);
         } else {
             $decoded = json_decode($resp, true);
             $items = $decoded['items'];
-            return($items);
+            $repositories = $this->filterUserRepositories($items);
+
+            dd($repositories);
+
+            return($repositories);
         }
 
         curl_close($ch);
 
+    }
+
+    function filterUserRepositories($items) {
+        $repositories = [];
+
+        foreach($items as $item) {
+            if($item['owner']['type'] == 'User') {
+                $repositories[] = $item;
+            }
+        }
+
+        return($repositories);
     }
 
 
