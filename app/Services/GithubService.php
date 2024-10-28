@@ -52,6 +52,8 @@ class GithubService {
 
         $url = 'https://api.github.com/search/topics?q=';
 
+        dd($url . $topic);
+
         curl_setopt($ch, CURLOPT_URL, $url . $topic);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HTTPHEADER, [
@@ -64,6 +66,7 @@ class GithubService {
             return($e);
         } else {
             $decoded = json_decode($resp, true);
+            dd($decoded);
             $content = $decoded['content'];
             $chunks = explode("\n", $content);
             $string = "";
@@ -72,6 +75,7 @@ class GithubService {
             }
 
             $data = json_decode($string);
+            dd($data);
             return($data);
         }
 
@@ -83,7 +87,7 @@ class GithubService {
      * 
      * @param string $keys Chave de busca do repositorio a ser pesquisado
      */
-    public function searchRepo($keys) {
+    public function searchRepo($keys, $type) {
 
         $ch = curl_init();
 
@@ -91,9 +95,9 @@ class GithubService {
 
         $NOT_BY_VALIDATORS = '+-org:Laravel-Backpack+-org:laravel+-org:Laravel-Lang+-org:NativePHP+-org:nodejs+-org:nextjsx+-org:nestjsx+-org:facebook+-org:vercel+-org:vuejs+-org:angular+-org:babel+-org:webpack+-org:electron+-org:emberjs+-org:apache+-org:gradle+-org:openjdk+-org:jboss+-org:spring-projects+-org:pallets+-org:django+-org:python+-org:pytorch+-org:numpy+-org:scipy+-org:pandas-dev+-org:ansible+-org:dotnet+-org:microsoft+-org:mono+-org:xamarin';
 
-        $query = $keys . '%20in:name';
+        $query = $keys . '%20in:' . $type;
 
-        // dd(strlen($url . $query));
+        // dd(($url . $query));
 
         curl_setopt($ch, CURLOPT_URL, $url . $query);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -103,7 +107,7 @@ class GithubService {
 
         $resp = curl_exec($ch);
 
-        dd($resp);
+        // dd($resp);
 
         if($e = curl_error($ch)){
             return($e);

@@ -78,125 +78,132 @@ class LLMService {
 
     function extractKeyWords($categories, $text) {
 
-        // $filters = [
-        //     'Qualquer' => [],
-        
-        //     'CRUD' => [
-        //         'create', 'read', 'update', 'delete', 'CRUD operations', 
-        //         'RESTful', 'basic app', 'resource management'
-        //     ],
-        
-        //     'ERP' => [
-        //         'enterprise resource planning', 'ERP', 'business management', 
-        //         'inventory', 'accounting', 'HR', 'supply chain'
-        //     ],
-        
-        //     'E-commerce' => [
-        //         'ecommerce', 'shopping', 'payment', 'checkout', 'cart', 
-        //         'online store', 'product listing'
-        //     ],
-        
-        //     'BI' => [
-        //         'business intelligence', 'BI', 'data visualization', 
-        //         'analytics', 'dashboard', 'reporting', 'ETL', 'data warehouse'
-        //     ],
-        
-        //     'WEB' => [
-        //         'web app', 'web application', 'browser', 'frontend', 
-        //         'backend', 'website', 'SPA', 'single page application'
-        //     ],
-        
-        //     'Mobile' => [
-        //         'mobile app', 'iOS', 'Android', 'react native', 'flutter', 
-        //         'apk', 'mobile development'
-        //     ],
-        
-        //     'Desktop' => [
-        //         'desktop application', 'electron', 'exe', 'software', 
-        //         'standalone app', 'desktop app', 'cross-platform'
-        //     ],
-        
-        //     'Monolítico' => [
-        //         'monolithic', 'single codebase', 'single deployable', 
-        //         'monolithic architecture', 'monolith'
-        //     ],
-        
-        //     'Microsserviços' => [
-        //         'microservices', 'service-oriented', 'distributed', 
-        //         'RESTful', 'docker', 'containerization', 
-        //         'microservice architecture'
-        //     ],
-        
-        //     'API' => [
-        //         'API', 'RESTful', 'GraphQL', 'endpoint', 
-        //         'service integration', 'data exchange', 'JSON', 
-        //         'API development'
-        //     ],
-        
-        //     'GUI' => [
-        //         'graphical user interface', 'user interface', 'UI', 
-        //         'interface design', 'frontend', 'desktop GUI', 
-        //         'visual elements', 'interaction'
-        //     ]
-        // ];
-
         $filters = [
             'Qualquer' => [],
         
             'CRUD' => [
-                'CRUD', 'RESTful'
+                'create', 'read', 'update', 'delete', 'CRUD operations', 
+                'RESTful', 'basic app', 'resource management'
             ],
         
             'ERP' => [
-                'ERP', 'business', 'inventory',
+                'enterprise resource planning', 'ERP', 'business management', 
+                'inventory', 'accounting', 'HR', 'supply chain'
             ],
         
             'E-commerce' => [
-                'ecommerce','store', 'product'
+                'ecommerce', 'shopping', 'payment', 'checkout', 'cart', 
+                'online store', 'product listing'
             ],
         
             'BI' => [
-                'business intelligence', 'BI', 'data', 'analytics', 'dashboard'
+                'business intelligence', 'BI', 'data visualization', 
+                'analytics', 'dashboard', 'reporting', 'ETL', 'data warehouse'
             ],
         
             'WEB' => [
-                'web app', 'web', 'browser', 'SPA'
+                'web app', 'web application', 'browser', 'frontend', 
+                'backend', 'website', 'SPA', 'single page application'
             ],
         
             'Mobile' => [
-                'mobile', 'iOS', 'Android', 'apk'
+                'mobile app', 'iOS', 'Android', 'react native', 'flutter', 
+                'apk', 'mobile development'
             ],
         
             'Desktop' => [
-                'desktop', 'electron', 'software'
+                'desktop application', 'electron', 'exe', 'software', 
+                'standalone app', 'desktop app', 'cross-platform'
             ],
         
             'Monolítico' => [
-                'monolithic', 'monolith'
+                'monolithic', 'single codebase', 'single deployable', 
+                'monolithic architecture', 'monolith'
             ],
         
             'Microsserviços' => [
-                'microservices', 'distributed', 'RESTful', 'containerization'
+                'microservices', 'service-oriented', 'distributed', 
+                'RESTful', 'docker', 'containerization', 
+                'microservice architecture'
             ],
         
             'API' => [
-                'API', 'RESTful', 'GraphQL', 'endpoint', 'service integration', 'JSON'
+                'API', 'RESTful', 'GraphQL', 'endpoint', 
+                'service integration', 'data exchange', 'JSON', 
+                'API development'
             ],
         
             'GUI' => [
-                'interface', 'UI', 'frontend', 'visual',
+                'graphical user interface', 'user interface', 'UI', 
+                'interface design', 'frontend', 'desktop GUI', 
+                'visual elements', 'interaction'
             ]
         ];
+
+        // $filters = [
+        //     'Qualquer' => [],
+        
+        //     'CRUD' => [
+        //         'CRUD', 'RESTful'
+        //     ],
+        
+        //     'ERP' => [
+        //         'ERP', 'business', 'inventory',
+        //     ],
+        
+        //     'E-commerce' => [
+        //         'ecommerce','store', 'product'
+        //     ],
+        
+        //     'BI' => [
+        //         'business intelligence', 'BI', 'data', 'analytics', 'dashboard'
+        //     ],
+        
+        //     'WEB' => [
+        //         'web app', 'web', 'browser', 'SPA'
+        //     ],
+        
+        //     'Mobile' => [
+        //         'mobile', 'iOS', 'Android', 'apk'
+        //     ],
+        
+        //     'Desktop' => [
+        //         'desktop', 'electron', 'software'
+        //     ],
+        
+        //     'Monolítico' => [
+        //         'monolithic', 'monolith'
+        //     ],
+        
+        //     'Microsserviços' => [
+        //         'microservices', 'distributed', 'RESTful', 'containerization'
+        //     ],
+        
+        //     'API' => [
+        //         'API', 'RESTful', 'GraphQL', 'endpoint', 'service integration', 'JSON'
+        //     ],
+        
+        //     'GUI' => [
+        //         'interface', 'UI', 'frontend', 'visual',
+        //     ]
+        // ];
 
         $keywords = [];
 
         $raystack = strtoupper($text);
 
-        foreach($categories as $cat) {
-            foreach($cat as $entry) {
+        foreach($categories as $categorie) {
+            foreach($categorie as $entry) {
                 $needle = strtoupper($entry);
                 if(str_contains($raystack, $needle)){
-                    $keywords[$entry] = $filters[$entry];
+                    $filter_len = count($filters[$entry]);
+                    
+                    if($filter_len > 0) { //exceto pro primeiro
+                        $random_filter = rand(0, $filter_len - 1);
+                        $keywords[] =   [$filters[$entry][$random_filter]]; //pegar um filtro (palavra chave) aleatoria
+                    } else {
+                        $keywords[] =   []; //Esse else é só pra considera a existência da primeira categoria (linguagem)
+                    }
                 }
             }
         }

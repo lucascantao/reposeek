@@ -24,11 +24,12 @@ class RepoController extends Controller
                 $query_key .= $key . ' OR ';
             }
         }
+        $query_key .= 'DISCARD';
+        $query_key = str_replace(' OR DISCARD', '', $query_key);
         $query_key = str_replace(' ', '%20', $query_key);
 
-        // dd($query_key);
-
-        $response = $this->githubService->searchRepo($query_key);
+        // $response_topics = $this->githubService->searchTopic($query_key);
+        $response_repositories = $this->githubService->searchRepo($query_key, 'description');
 
         return view('pages.repo.response', ['response' => '']);
 
