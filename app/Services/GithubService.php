@@ -93,8 +93,6 @@ class GithubService {
 
         $url = 'https://api.github.com/search/repositories?q=';
 
-        $NOT_BY_VALIDATORS = '+-org:Laravel-Backpack+-org:laravel+-org:Laravel-Lang+-org:NativePHP+-org:nodejs+-org:nextjsx+-org:nestjsx+-org:facebook+-org:vercel+-org:vuejs+-org:angular+-org:babel+-org:webpack+-org:electron+-org:emberjs+-org:apache+-org:gradle+-org:openjdk+-org:jboss+-org:spring-projects+-org:pallets+-org:django+-org:python+-org:pytorch+-org:numpy+-org:scipy+-org:pandas-dev+-org:ansible+-org:dotnet+-org:microsoft+-org:mono+-org:xamarin';
-
         $query = $keys . '%20in:' . $type;
 
         // dd(($url . $query));
@@ -116,7 +114,7 @@ class GithubService {
             $items = $decoded['items'];
             $repositories = $this->filterUserRepositories($items);
 
-            dd($repositories);
+            // dd($repositories);
 
             return($repositories);
         }

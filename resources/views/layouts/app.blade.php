@@ -4,6 +4,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        <link rel="icon" type="image/x-icon" href="/images/icons/reposeek-logo.png">
+
         <title>Reposeek</title>
 
         {{-- Local Style --}}
@@ -18,7 +20,8 @@
     </head>
     <body>
 
-        {{-- @include('layouts.header') --}}
+        @include('layouts.sidebar')
+        
         <main class="content">
             @yield('content')
         </main>

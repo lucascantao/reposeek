@@ -2,13 +2,23 @@
     --sidebar-bg-color: #cacaca;
     --sidebar-button-color: #b8b8b8;
     --chat-bg-color: #585858;
+    --repository-bg-color: #6f6f6f;
     --chat-title-color: #b8b8b8;
+
+    --text-dark: #212529;
+    --text-light: #f8f9fa;
 }
 
-main {
+body {
     width: 100%;
     height: 100vh;
     display: flex;
+}
+
+main {
+    width: 80%;
+    height: 100%;
+    /* display: flex; */
 }
 
 /* .ContainerFormDescricao {
@@ -53,13 +63,14 @@ main {
 
 .chatContainer {
     background-color: var(--chat-bg-color);
-    width: 80%;
     height: 100%;
     
     padding: 1em;
+
+    overflow-y: scroll;
 }
 
-.chatContainer .title {
+.chatContainer .appTitle {
     font-size: 24px;
     color: var(--chat-title-color);
 
@@ -86,4 +97,49 @@ main {
     position: absolute;
     bottom: 6px;
     right: 6px;
+}
+
+.chatContainer .repositories .repository {
+    position: relative;
+
+    background-color: var(--repository-bg-color);
+
+    padding: 3px 3px 1em 1em;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+
+.chatContainer .repositories .repository .header {
+    margin-bottom: 1em;
+}
+
+.chatContainer .repositories .repository .header .title {
+    color: var(--text-light);
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.chatContainer .repositories .repository .header .owner {
+    font-size: 14px;
+    font-weight: normal;
+    color: var(--chat-title-color);
+}
+
+.chatContainer .repositories .repository .owner i a {
+    color: var(--text-dark);
+}
+
+.chatContainer .repositories .repository .description {
+    color: var(--chat-title-color);
+}
+
+.chatContainer .repositories .repository .actions {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+.chatContainer .repositories .repository .actions a {
+    color: white;
+    text-decoration: none;
 }
