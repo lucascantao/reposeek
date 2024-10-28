@@ -1,5 +1,6 @@
 :root {
     --sidebar-bg-color: #cacaca;
+    --sidebar-button-color: #b8b8b8;
     --chat-bg-color: #585858;
     --chat-title-color: #b8b8b8;
 }
@@ -18,6 +19,36 @@ main {
     width: 20%;
     height: 100%;
     background-color: var(--sidebar-bg-color);
+    padding: .5em;
+}
+
+.sidebar .sidebarHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.sidebar .sobre {
+    width: 100%;
+    margin-top: 1em;
+    background-color: var(--sidebar-button-color);
+}
+
+.sidebar .sidebarMenu {
+    margin-top: 1em;
+}
+
+.sidebar .sidebarMenu .menuTitle {
+    font-size: large;
+    font-weight: bold;
+}
+
+.sidebar .sidebarMenu .menuItem {
+    background-color: var(--sidebar-button-color);
+    padding: 1em;
+    margin-bottom: .5em;
+    border-radius: 8px;
 }
 
 .chatContainer {
