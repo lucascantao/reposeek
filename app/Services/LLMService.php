@@ -200,9 +200,9 @@ class LLMService {
                     
                     if($filter_len > 0) { //exceto pro primeiro
                         $random_filter = rand(0, $filter_len - 1);
-                        $keywords[] =   [$filters[$entry][$random_filter]]; //pegar um filtro (palavra chave) aleatoria
+                        $keywords[$needle] =   [$filters[$entry][$random_filter]]; //pegar um filtro (palavra chave) aleatoria
                     } else {
-                        $keywords[] =   []; //Esse else é só pra considera a existência da primeira categoria (linguagem)
+                        $keywords[$needle] =   []; //Esse else é só pra considera a existência da primeira categoria (linguagem)
                     }
                 }
             }

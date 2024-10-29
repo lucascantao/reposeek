@@ -9,19 +9,18 @@
     <div class="sidebarMenu">
         <div class="menuTitle">Projeto Recentes</div>
         <div class="menuBody">
-            <div class="menuItem">Projeto 1</div>
-            <div class="menuItem">Projeto 2</div>
-            <div class="menuItem">Projeto 3</div>
+            @if(Auth::user() != null)
+                @foreach(Auth::user()->projetos as $projeto)
+                    <div class="menuItem">{{ $projeto->name }}</div>
+                @endforeach
+            @endif
         </div>
     </div>
 
     <div class="userArea">
         @if(Auth::user() != null)
             <div class="userName"><i class="bi bi-person-fill"></i> {{ Auth::user()->name }}</div>
-            <a href="{{ route('logout') }}" class="btn btn-secondary" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sair</a>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                @csrf
-            </form>
+            <a href="{{ route('logout') }}" class="btn btn-secondary">Sair</a>
         @else
             <a href="{{ route('login') }}" class="btn btn-secondary">Login</a>
         @endif
