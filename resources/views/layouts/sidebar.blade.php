@@ -14,4 +14,16 @@
             <div class="menuItem">Projeto 3</div>
         </div>
     </div>
+
+    <div class="userArea">
+        @if(Auth::user() != null)
+            <div class="userName"><i class="bi bi-person-fill"></i> {{ Auth::user()->name }}</div>
+            <a href="{{ route('logout') }}" class="btn btn-secondary" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sair</a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+            </form>
+        @else
+            <a href="{{ route('login') }}" class="btn btn-secondary">Login</a>
+        @endif
+    </div>
 </div>
