@@ -1,49 +1,25 @@
 @extends('layouts.guest')
 @section('authentication')
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
-
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
-
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
-
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-            </label>
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
-
-            <x-primary-button class="ms-3">
-                {{ __('Log in') }}
-            </x-primary-button>
-        </div>
-    </form>
+    
+<div class="container form-container">
+    <div class="form-box">
+        <span><img src="/images/icons/reposeek-logo.png" alt="" height="48px"><h3 class="text-center mb-4">Login</h3></span>
+        
+        <form action="{{ route('login') }}" method="post">
+            @csrf
+            @method('post')
+            <div class="form-group mb-3">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" name="email" id="email" placeholder="Digite seu email" required>
+            </div>
+            <div class="form-group mb-3">
+                <label for="password">Senha</label>
+                <input type="password" class="form-control" name="password" id="password" placeholder="Digite sua senha" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+            <a href="{{ route('register') }}" class="btn btn-secondary btn-block">Registrar</a>
+        </form>
+    </div>
+</div>
 
 @endsection
