@@ -10,7 +10,7 @@ use App\Models\Projeto;
 class RepoController extends Controller
 {
 
-    public function form() {
+    public function index() {
         return view('pages.repo.index');
     }
 
