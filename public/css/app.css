@@ -59,13 +59,20 @@ main {
     font-weight: bold;
 }
 
-.sidebar .sidebarMenu a {
+.sidebar .sidebarMenu a,
+.sidebar .sidebarMenu .menuItem a {
     text-decoration: none;
+    color: var(--text-dark);
 }
 
 .sidebar .sidebarMenu .menuItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
     background-color: var(--sidebar-button-color);
     color: var(--text-dark);
+
     padding: 1em;
     margin-bottom: .5em;
     border-radius: 8px;

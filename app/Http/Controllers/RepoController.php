@@ -22,6 +22,14 @@ class RepoController extends Controller
         return view('pages.repo.response', ['repositories' => $response_repositories]);
     }
 
+    public function delete($id) {
+        $projeto = Projeto::find($id);
+
+        $projeto->delete();
+
+        return redirect(route('repo.index'));
+    }
+
     public function searchRepositories(Request $request) {
 
         $keywords_array = $this->llmService->filtrarPalavrasChave($request->descricaoProjeto);

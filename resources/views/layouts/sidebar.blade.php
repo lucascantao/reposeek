@@ -12,7 +12,10 @@
             @if(Auth::user() != null)
                 @foreach(Auth::user()->projetos as $projeto)
                     <a href="{{ route('repo.show', ['id' => $projeto->id])}}">
-                        <div class="menuItem">{{ $projeto->name }}</div>
+                        <div class="menuItem">
+                            <span>{{ $projeto->name }}</span>
+                            <a href="{{ route('repo.delete', ['id' => $projeto->id])}}" class="btn btn-outline-secondary"><i class="bi bi-trash"></i></a>
+                        </div>
                     </a>
                 @endforeach
             @endif
