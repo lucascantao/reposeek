@@ -80,6 +80,7 @@ main {
 
 .sidebar .sidebarMenu .menuItem:hover {
     background-color: var(--sidebar-button-color-hover);
+    cursor: pointer;
 }
 
 .sidebar .userArea {

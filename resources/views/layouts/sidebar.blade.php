@@ -1,11 +1,13 @@
 <div class="sidebar">
     <div class="sidebarHeader">
         <span><img src="/images/icons/reposeek-logo.png" alt="" height="48px"></span>
-        <a href="https://github.com/lucascantao/reposeek" target="_blank" class="btn btn-secondary"><span><i class="bi bi-question-circle"></i> Sobre</span></a>
+        <div>
+            
+            <a href="https://github.com/lucascantao/reposeek" target="_blank" class="btn"><span><i class="bi bi-question-circle"></i></span></a>
+            <a href="{{ route('repo.index') }}" class="btn"><span><i class="bi bi-pencil-square"></i></span></a>
+        </div>
     </div>
-
     <hr>
-
     <div class="sidebarMenu">
         <div class="menuTitle fs-4 mb-4">Projeto Recentes</div>
         <div class="menuBody">
