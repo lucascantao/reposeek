@@ -1,7 +1,7 @@
 <div class="sidebar">
     <div class="sidebarHeader">
         <span><img src="/images/icons/reposeek-logo.png" alt="" height="48px"></span>
-        <a href="https://github.com/reposeek" target="_blank" class="btn btn-secondary"><span><i class="bi bi-question-circle"></i> Sobre</span></a>
+        <a href="https://github.com/lucascantao/reposeek" target="_blank" class="btn btn-secondary"><span><i class="bi bi-question-circle"></i> Sobre</span></a>
     </div>
 
     <hr>
