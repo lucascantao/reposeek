@@ -11,7 +11,9 @@
         <div class="menuBody">
             @if(Auth::user() != null)
                 @foreach(Auth::user()->projetos as $projeto)
-                    <div class="menuItem">{{ $projeto->name }}</div>
+                    <a href="{{ route('repo.show', ['id' => $projeto->id])}}">
+                        <div class="menuItem">{{ $projeto->name }}</div>
+                    </a>
                 @endforeach
             @endif
         </div>

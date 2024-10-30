@@ -14,6 +14,14 @@ class RepoController extends Controller
         return view('pages.repo.index');
     }
 
+    public function show($id) {
+        $projeto = Projeto::find($id);
+
+        $response_repositories = $this->githubService->searchRepo($projeto->query, 'description');
+
+        return view('pages.repo.response', ['repositories' => $response_repositories]);
+    }
+
     public function searchRepositories(Request $request) {
 
         $keywords_array = $this->llmService->filtrarPalavrasChave($request->descricaoProjeto);

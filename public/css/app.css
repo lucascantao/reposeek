@@ -2,6 +2,8 @@
 :root {
     --sidebar-bg-color: #cacaca;
     --sidebar-button-color: #b8b8b8;
+    --sidebar-button-color-hover: #939393;
+
     --chat-bg-color: #585858;
     --repository-bg-color: #6f6f6f;
     --chat-title-color: #b8b8b8;
@@ -57,11 +59,20 @@ main {
     font-weight: bold;
 }
 
+.sidebar .sidebarMenu a {
+    text-decoration: none;
+}
+
 .sidebar .sidebarMenu .menuItem {
     background-color: var(--sidebar-button-color);
+    color: var(--text-dark);
     padding: 1em;
     margin-bottom: .5em;
     border-radius: 8px;
+}
+
+.sidebar .sidebarMenu .menuItem:hover {
+    background-color: var(--sidebar-button-color-hover);
 }
 
 .sidebar .userArea {
@@ -123,6 +134,17 @@ main {
     padding: 3px 3px 1em 1em;
     margin-bottom: 5px;
     border-radius: 5px;
+
+    transition: all .4s ease-in-out;
+}
+
+.chatContainer .repositories .repository:hover {
+    /* border: 1px solid var(--text-dark); */
+    /* padding-bottom: 1.5em; */
+
+    cursor: pointer;
+
+    /* transition: all 0.2s ease-in-out; */
 }
 
 .chatContainer .repositories .repository .header {

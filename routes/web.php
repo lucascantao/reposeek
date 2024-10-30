@@ -10,6 +10,7 @@ Route::get('/', function () {
 
 Route::prefix('/repo')->group( function() {
     Route::get('/', [RepoController::class, 'index'])->name('repo.index');
+    Route::get('/{id}', [RepoController::class, 'show'])->name('repo.show');
 
     Route::prefix('/search')->group( function() {
         Route::post('/repositories', [RepoController::class, 'searchRepositories'])->name('repo.searchRepositories');
