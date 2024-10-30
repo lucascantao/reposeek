@@ -2,7 +2,9 @@
 @section('authentication')
 <div class="container form-container">
     <div class="form-box">
-        <span><img src="/images/icons/reposeek-logo.png" alt="" height="48px"><h3 class="text-center mb-4">Login</h3></span>
+        <span><img src="/images/icons/reposeek-logo.png" alt="" height="48px" style="display: block;
+margin-left: auto;
+margin-right: auto;"><h3 class="text-center mb-4">Registrar</h3></span>
             <form method="POST" action="{{ route('register') }}">
                 @csrf
                 <div class="form-group mb-3">
