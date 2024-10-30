@@ -142,7 +142,19 @@ main {
     margin-left: auto;
     margin-bottom: 1em;
 
-    border-radius: 15px;
+    border-radius: 15px 0 15px 15px;
+
+    background-color: var(--text-dark);
+    color: var(--text-light);
+}
+
+.chatContainer .systemText {
+    width: 500px;
+    padding: 1em;
+    margin-right: auto;
+    margin-bottom: 1em;
+
+    border-radius: 0 15px 15px 15px;
 
     background-color: var(--repository-bg-color);
     color: var(--text-light);

@@ -13,6 +13,26 @@
             {{ $description }}
         </div>
 
+        <div class="systemText">
+            Vi aqui que seu projeto se encaixa nas seguintes categorias:
+            <ul>
+                <li class="category">
+                    Funcionalidade: <i>{{  $categories[1] }}</i>
+                </li>
+                <li class="category">
+                    Domínio: <i>{{  $categories[2] }}</i>
+                </li>
+                <li class="category">
+                    Arquitetura: <i>{{  $categories[3] }}</i>
+                </li>
+                <li class="category">
+                    Interação: <i>{{  $categories[4] }}</i>
+                </li>
+            </ul>
+            <br>
+            Selecionei alguns repositórios que tenham haver com o objetivo do seu sistema.
+        </div>
+
         <div class="repositories">
     
             @foreach($repositories as $repository)

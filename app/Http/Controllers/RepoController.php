@@ -78,7 +78,8 @@ class RepoController extends Controller
 
         return view('pages.repo.response', [
             'repositories' => $response_repositories,
-            'description' => $request->descricaoProjeto
+            'description' => $request->descricaoProjeto,
+            'categories' => array_keys($keywords_array)
         ]);
 
     }
