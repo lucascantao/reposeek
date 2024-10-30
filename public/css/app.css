@@ -78,9 +78,9 @@ main {
     border-radius: 8px;
 }
 
-.sidebar .sidebarMenu .menuItem:hover {
-    background-color: var(--sidebar-button-color-hover);
-    cursor: pointer;
+.sidebar .sidebarMenu .menuItem > div {
+    display: flex;
+    align-items: center;
 }
 
 .sidebar .userArea {
@@ -97,6 +97,8 @@ main {
 }
 
 .chatContainer {
+    position: relative;
+
     background-color: var(--chat-bg-color);
     height: 100%;
     
@@ -132,6 +134,18 @@ main {
     position: absolute;
     bottom: 6px;
     right: 6px;
+}
+
+.chatContainer .userText {
+    width: 500px;
+    padding: 1em;
+    margin-left: auto;
+    margin-bottom: 1em;
+
+    border-radius: 15px;
+
+    background-color: var(--repository-bg-color);
+    color: var(--text-light);
 }
 
 .chatContainer .repositories .repository {

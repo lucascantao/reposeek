@@ -13,12 +13,13 @@
         <div class="menuBody">
             @if(Auth::user() != null)
                 @foreach(Auth::user()->projetos as $projeto)
-                    <a href="{{ route('repo.show', ['id' => $projeto->id])}}">
-                        <div class="menuItem">
-                            <span>{{ $projeto->name }}</span>
+                    <div class="menuItem">
+                        <span>{{ substr($projeto->description, 0, 20).'...' }}</span>
+                        <div>
+                            <a href="{{ route('repo.show', ['id' => $projeto->id])}}" class="btn btn-outline-secondary me-1"><i class="bi bi-box-arrow-up-right"></i></a>
                             <a href="{{ route('repo.delete', ['id' => $projeto->id])}}" class="btn btn-outline-secondary"><i class="bi bi-trash"></i></a>
                         </div>
-                    </a>
+                    </div>
                 @endforeach
             @endif
         </div>

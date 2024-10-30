@@ -19,7 +19,10 @@ class RepoController extends Controller
 
         $response_repositories = $this->githubService->searchRepo($projeto->query, 'description');
 
-        return view('pages.repo.response', ['repositories' => $response_repositories]);
+        return view('pages.repo.response', [
+            'repositories' => $response_repositories,
+            'description' => $projeto->description
+        ]);
     }
 
     public function delete($id) {
@@ -73,7 +76,10 @@ class RepoController extends Controller
 
         // dd($response_repositories);
 
-        return view('pages.repo.response', ['repositories' => $response_repositories]);
+        return view('pages.repo.response', [
+            'repositories' => $response_repositories,
+            'description' => $request->descricaoProjeto
+        ]);
 
     }
 }

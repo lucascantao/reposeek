@@ -7,23 +7,29 @@
         <span><img src="/images/icons/reposeek-logo.png" alt="" height="128px"></span>
     </div>
 
-    <div class="repositories">
+    <div class="chatContainer">
 
-        @foreach($repositories as $repository)
-            <div class="repository">
-                <div class="header">
-                    <div class="title">{{ $repository['name'] }} <span class="owner"> | by <i> <a href="{{ $repository['owner']['html_url'] }}" target="_blank">{{ $repository['owner']['login'] }}</a></i></span> </div>
-                    
+        <div class="userText">
+            {{ $description }}
+        </div>
 
+        <div class="repositories">
+    
+            @foreach($repositories as $repository)
+                <div class="repository">
+                    <div class="header">
+                        <div class="title">{{ $repository['name'] }} <span class="owner"> | by <i> <a href="{{ $repository['owner']['html_url'] }}" target="_blank">{{ $repository['owner']['login'] }}</a></i></span> </div>
+                    </div>
+                    <div class="description">{{ substr($repository['description'], 0, 120).'...' }}</div>
+    
+                    <div class="actions">
+                        <a href="https://github.com/{{ $repository['full_name'] }}" target="_blank"><i class="bi bi-box-arrow-up-right"></i></a>
+                    </div>
                 </div>
-                <div class="description">{{ substr($repository['description'], 0, 120).'...' }}</div>
-
-                <div class="actions">
-                    <a href="https://github.com/{{ $repository['full_name'] }}" target="_blank"><i class="bi bi-box-arrow-up-right"></i></a>
-                </div>
-            </div>
-        @endforeach
-
+            @endforeach
+    
+        </div>
     </div>
+
 </div>
 @endsection
