@@ -1,13 +1,13 @@
 <div class="sidebar">
     <div class="sidebarHeader">
         <span><img src="/images/icons/reposeek-logo.png" alt="" height="48px"></span>
-        <span><i class="bi bi-chevron-bar-left"></i></span>
+        <a href="https://github.com/reposeek" target="_blank" class="btn btn-secondary"><span><i class="bi bi-question-circle"></i> Sobre</span></a>
     </div>
 
-    <span class="btn btn-secondary sobre"><i class="bi bi-info-circle"></i> Sobre</span>
+    <hr>
 
     <div class="sidebarMenu">
-        <div class="menuTitle">Projeto Recentes</div>
+        <div class="menuTitle fs-4 mb-4">Projeto Recentes</div>
         <div class="menuBody">
             @if(Auth::user() != null)
                 @foreach(Auth::user()->projetos as $projeto)
