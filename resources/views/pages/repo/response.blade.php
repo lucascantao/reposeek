@@ -17,16 +17,16 @@
             Vi aqui que seu projeto se encaixa nas seguintes categorias:
             <ul>
                 <li class="category">
-                    Funcionalidade: <i>{{  $categories[1] }}</i>
+                    Funcionalidade: <i>{{ isset($categories[1]) ? $categories[1] : 'Inconclusivo' }}</i>
                 </li>
                 <li class="category">
-                    Domínio: <i>{{  $categories[2] }}</i>
+                    Domínio: <i>{{ isset($categories[2]) ? $categories[2] : 'Inconclusivo' }}</i>
                 </li>
                 <li class="category">
-                    Arquitetura: <i>{{  $categories[3] }}</i>
+                    Arquitetura: <i>{{ isset($categories[3]) ? $categories[3] : 'Inconclusivo' }}</i>
                 </li>
                 <li class="category">
-                    Interação: <i>{{  $categories[4] }}</i>
+                    Interação: <i>{{ isset($categories[4]) ? $categories[4] : 'Inconclusivo' }}</i>
                 </li>
             </ul>
             <br>
